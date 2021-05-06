@@ -249,10 +249,10 @@ BOOL CDrawPathDlg::OnInitDialog()
 	ptCenter.y =  rect.Height() ;
 
 	//绘图初始化线段的起始点和结束点
-	ptStartForDraw.x = 500 ;
-	ptStartForDraw.y = 350 ;
+	ptStartForDraw.x = 400 ;
+	ptStartForDraw.y =400 ;
 	ptEndForDraw.x = 60 ;
-	ptEndForDraw.y = 124 ;
+	ptEndForDraw.y = 20 ;
 
 
 
@@ -284,7 +284,7 @@ BOOL CDrawPathDlg::OnInitDialog()
 	DrawToCalc() ;
 	//将计算坐标显示在控件中
 	ShowCalcPoint() ;
-
+	DrawBrick();
 	//为控制点数组分配存储空间
 	ControlPointForDraw = new CPoint[1000] ;
 	ControlPointForCalc = new fPoint[1000] ; 
@@ -357,7 +357,7 @@ void CDrawPathDlg::OnPaint()
 	
 	//选择原来的画笔
 	memDC.SelectObject(oldPen) ;
-	
+	DrawBrick();
 	//绘制线段
 	DrawTestLine() ;
 
@@ -410,10 +410,7 @@ void CDrawPathDlg::Calculate()
 	z3.y = z4.y - (int)(brick_width * sin((angle_temp ) * PI / 180) / 2);
 
 	
-	//调试用
-	CString strTemp ;
-	strTemp.Format("move%.3f,%.3f,%.3f,%.3f", angle_moving.Angle1, angle_moving.Angle2, angle_moving.Angle3, angle_temp);
-	SetDlgItemText(IDC_EDIT1_dd,strTemp) ;
+	
 }
 
 
@@ -453,10 +450,38 @@ void CDrawPathDlg::DrawRobot()
 
 
 
+
+void CDrawPathDlg::DrawBrick()
+{
+	
+	//brickcenter.y
+	brick_width = 40;
+
+brick1.x = brickcenter.x + (int)(brick_width * cos((end_alpha - 90) * PI / 180) / 2);
+brick1.y = brickcenter.y - (int)(brick_width * sin((end_alpha - 90) * PI / 180) / 2);
+
+brick2.x = brick1.x + (int)(brick_width * cos((end_alpha)*PI / 180) / 2);
+brick2.y = brick1.y - (int)(brick_width * sin((end_alpha)*PI / 180) / 2);
+
+brick4.x = brickcenter.x + (int)(brick_width * cos((end_alpha + 90) * PI / 180) / 2);
+brick4.y = brickcenter.y - (int)(brick_width * sin((end_alpha + 90) * PI / 180) / 2);
+
+brick3.x = brick4.x + (int)(brick_width * cos((end_alpha)*PI / 180) / 2);
+brick3.y = brick4.y - (int)(brick_width * sin((end_alpha)*PI / 180) / 2);
+
+
+//CString strTemp;
+	//strTemp.Format("angle1.2,%f,%f,,%f,%f", brick1.x, brickcenter.x, brickcenter.y);
+	//SetDlgItemText(IDC_EDIT1_dd, strTemp);
+
+}
+
 void CDrawPathDlg::DrawTestLine()
 {
 	memDC.MoveTo(ptStartForDraw) ;
 	memDC.LineTo(ptEndForDraw) ;
+	
+	//memDC.rect
 	//memDC.Rectangle
 }
 
@@ -530,11 +555,15 @@ void CDrawPathDlg::GetDataFromControl()
 	end_alpha = -end_alpha / 180 * PI;
 
 	GetDlgItemText(IDC_EDIT_StartX, strTemp) ;
-	ptStartForDraw.x = atoi(strTemp) - (m_iLength3+ 2*brick_Length) * cos(end_alpha);//将字符串转换成整型数字
+	float stemp= atoi(strTemp) ;//将字符串转换成整型数字
+	ptStartForDraw.x = stemp - (m_iLength3 + 2 * brick_Length) * cos(end_alpha);
+	brickcenter.x = stemp -  brick_Length * cos(end_alpha);
+
 
 	GetDlgItemText(IDC_EDIT_StartY, strTemp) ;
-	ptStartForDraw.y = atoi(strTemp)  + (m_iLength3 + 2*brick_Length) * sin( - end_alpha);//将字符串转换成整型数字
-
+	float stemp1 = atoi(strTemp)  ;//将字符串转换成整型数字
+	ptStartForDraw.y = stemp1+ (m_iLength3 + 2 * brick_Length) * sin(-end_alpha);//将字符串转换成整型数字
+	brickcenter.y = stemp1+ brick_Length * sin(-end_alpha);
 	//1
 	
 	//GetDlgItemText(IDC_EDIT_EndX, strTemp) ;
@@ -547,8 +576,8 @@ void CDrawPathDlg::GetDataFromControl()
 	ptEndForDraw.y = (float)(ptStartForDraw.y + (brick_Length)*sin(end_alpha));
 
 	//CString strTemp;
-	//strTemp.Format("angle1.2,%f,%f,,%f,%f", end_alpha, ptEndForDraw.x, ptEndForDraw.y);
-	//SetDlgItemText(IDC_EDIT1_dd, strTemp);
+	strTemp.Format("angle1.2,%f,%f,,%f,%f", end_alpha, ptEndForDraw.x, ptEndForDraw.y);
+	SetDlgItemText(IDC_EDIT1_dd, strTemp);
 
 
 	DrawToCalc() ;

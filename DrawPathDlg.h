@@ -48,6 +48,8 @@ public:
 	CPoint pt2 ;//连杆2末端点的坐标
 	CPoint pt3 ;//连杆3末端点的坐标
 	CPoint z1,z2,z3,z4;//爪子坐标点
+	CPoint brick1, brick2, brick3, brick4,brickcenter;//物块坐标点
+
 
 
 	fAngle angle_moving;
@@ -113,6 +115,8 @@ public:
 	void DrawToCalc() ;//将绘图坐标转换为计算坐标
 	void ShowCalcPoint() ;//将计算坐标显示在控件中
 	void AngleJudge();//计算角度（-180-180）
+	void DrawBrick();//计算角度（-180-180）
+
 
 	CPoint* ControlPointForDraw ;//用于存储绘图的控制点
 	fPoint* ControlPointForCalc ;//用于存储计算的控制点
