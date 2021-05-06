@@ -148,7 +148,7 @@ BOOL CDrawPathDlg::OnInitDialog()
 	angle_moving.Angle3 = -170 ; 
 	
 	
-	m_iLength1 = 150 ;
+	m_iLength1 = 450 ;
 	m_iLength2 =  120 ;
     m_iLength3 = 60 ;    
 	brick_Length = 40;
@@ -252,8 +252,8 @@ BOOL CDrawPathDlg::OnInitDialog()
 	ptStartForDraw.x = 400 ;
 	ptStartForDraw.y =400 ;
 	ptEndForDraw.x = 60 ;
-	ptEndForDraw.y = 20 ;
-
+	//ptEndForDraw.y = 40 ;
+	brick_Length = 40;
 
 
 
@@ -263,7 +263,7 @@ BOOL CDrawPathDlg::OnInitDialog()
 
 	strTemp.Format("%d",ptStartForDraw.y);
 	SetDlgItemText(IDC_EDIT_StartY,strTemp) ;
-
+	
 	strTemp.Format("%d",ptEndForDraw.x);
 	SetDlgItemText(IDC_EDIT_EndX,strTemp) ;
 
@@ -349,17 +349,17 @@ void CDrawPathDlg::OnPaint()
 	//绘制机器人
 	DrawRobot() ;
 	
-	int R = 3 ;
-	for(int i = 0 ; i <= m_iControlPointNumber + 1; i++)
+	//int R = 3 ;
+	/*for(int i = 0 ; i <= m_iControlPointNumber + 1; i++)
 	{
 		memDC.Ellipse(ControlPointForDraw[i].x - R ,ControlPointForDraw[i].y - R,ControlPointForDraw[i].x + R ,ControlPointForDraw[i].y + R) ;
 	}
-	
+*/
 	//选择原来的画笔
 	memDC.SelectObject(oldPen) ;
 	DrawBrick();
 	//绘制线段
-	DrawTestLine() ;
+	//DrawTestLine() ;
 
 	//删除创建的画笔
 	DeleteObject(Pen) ;
@@ -444,13 +444,13 @@ void CDrawPathDlg::DrawRobot()
 	memDC.MoveTo(z4);
 	memDC.LineTo(z3);
 
-	memDC.Rectangle(400,400,0,0 );
+	
 
 }
 
 
 
-
+//绘制物块
 void CDrawPathDlg::DrawBrick()
 {
 	
@@ -468,6 +468,20 @@ brick4.y = brickcenter.y - (int)(brick_width * sin((end_alpha + 90) * PI / 180) 
 
 brick3.x = brick4.x + (int)(brick_width * cos((end_alpha)*PI / 180) / 2);
 brick3.y = brick4.y - (int)(brick_width * sin((end_alpha)*PI / 180) / 2);
+
+memDC.MoveTo(brick1);
+memDC.LineTo(brick2);
+//绘制爪子
+memDC.MoveTo(brick2);
+memDC.LineTo(brick3);
+
+memDC.MoveTo(brick3);
+memDC.LineTo(brick4);
+
+memDC.MoveTo(brick4);
+memDC.LineTo(brick1);
+
+
 
 
 //CString strTemp;
@@ -565,7 +579,9 @@ void CDrawPathDlg::GetDataFromControl()
 	ptStartForDraw.y = stemp1+ (m_iLength3 + 2 * brick_Length) * sin(-end_alpha);//将字符串转换成整型数字
 	brickcenter.y = stemp1+ brick_Length * sin(-end_alpha);
 	//1
-	
+	strTemp.Format("angle1.2,%d,%d,,%d,%d", brick1.x, brickcenter.x, brickcenter.y);
+	SetDlgItemText(IDC_EDIT1_dd, strTemp);
+
 	//GetDlgItemText(IDC_EDIT_EndX, strTemp) ;
 	//ptEndForDraw.x = atoi(strTemp) ;//将字符串转换成整型数字
 
