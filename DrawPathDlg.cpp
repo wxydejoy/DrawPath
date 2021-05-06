@@ -535,7 +535,7 @@ void CDrawPathDlg::GetDataFromControl()
 	GetDlgItemText(IDC_EDIT_StartY, strTemp) ;
 	ptStartForDraw.y = atoi(strTemp)  + (m_iLength3 + 2*brick_Length) * sin( - end_alpha);//将字符串转换成整型数字
 
-	
+	//1
 	
 	//GetDlgItemText(IDC_EDIT_EndX, strTemp) ;
 	//ptEndForDraw.x = atoi(strTemp) ;//将字符串转换成整型数字
