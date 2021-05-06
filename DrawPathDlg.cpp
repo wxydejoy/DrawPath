@@ -10,7 +10,7 @@
 #define Region_W  300
 #define Region_H  300
 
-3
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #undef THIS_FILE
