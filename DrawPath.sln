@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DrawPath", "DrawPath.vcxproj", "{30595328-6C95-4206-A085-07ECCEA1537C}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "drawline", "C:\Users\WW\source\repos\drawline\drawline.vdproj", "{A6FFE84C-5420-4D09-AB9F-0D7CEE5F95F8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{30595328-6C95-4206-A085-07ECCEA1537C}.Debug|x86.ActiveCfg = Debug|Win32
+		{30595328-6C95-4206-A085-07ECCEA1537C}.Debug|x86.Build.0 = Debug|Win32
+		{30595328-6C95-4206-A085-07ECCEA1537C}.Release|x86.ActiveCfg = Release|Win32
+		{30595328-6C95-4206-A085-07ECCEA1537C}.Release|x86.Build.0 = Release|Win32
+		{A6FFE84C-5420-4D09-AB9F-0D7CEE5F95F8}.Debug|x86.ActiveCfg = Debug
+		{A6FFE84C-5420-4D09-AB9F-0D7CEE5F95F8}.Release|x86.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1B6ED54E-31EF-4FA6-A19A-7BEE327FC59A}
+	EndGlobalSection
+EndGlobal
