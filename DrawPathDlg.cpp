@@ -16,7 +16,7 @@
 #undef THIS_FILE
 static char THIS_FILE[] = __FILE__;
 #endif
-
+//r43g243
 /////////////////////////////////////////////////////////////////////////////
 // CAboutDlg dialog used for App About
 
