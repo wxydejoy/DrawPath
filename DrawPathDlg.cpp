@@ -10,7 +10,7 @@
 #define Region_W  300
 #define Region_H  300
 
-
+3
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #undef THIS_FILE
@@ -169,7 +169,7 @@ BOOL CDrawPathDlg::OnInitDialog()
 	m_iGVaule = 0 ;//绿色值
 	m_iBVaule = 0 ;//蓝色值
 	m_iWidth= 2 ;//画笔宽度值
-
+	//bhsgdehdue
 
 	//将值显示在控件中
 	CString strTemp ;
