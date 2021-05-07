@@ -719,7 +719,7 @@ void CDrawPathDlg::Moving()
 	angle_moving.Angle3 = -170;
     
 //	float end_angle1,end_angle2,end_angle3;
-    float t = 0.5;//变化量
+    float t = 0.5;//变化量aaaa
     float s = 2;//t<=s
 	
     fAngle angle_end[2];
