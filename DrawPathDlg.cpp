@@ -148,10 +148,10 @@ BOOL CDrawPathDlg::OnInitDialog()
 	angle_moving.Angle3 = -170 ; 
 	
 	
-	m_iLength1 = 450 ;
-	m_iLength2 =  120 ;
-    m_iLength3 = 60 ;    
-	brick_Length = 40;
+	m_iLength1 = 150 ;
+	m_iLength2 =  150 ;
+    m_iLength3 = 160 ;    
+	brick_Length = 60;
 		//物块姿态角
      //end_alpha = 80;
 
@@ -250,12 +250,12 @@ BOOL CDrawPathDlg::OnInitDialog()
 
 	//绘图初始化线段的起始点和结束点
 	ptStartForDraw.x = 400 ;
-	ptStartForDraw.y =400 ;
-	ptEndForDraw.x = 60 ;
+	ptStartForDraw.y =200 ;
+	
 	//ptEndForDraw.y = 40 ;
-	brick_Length = 40;
+	
 
-
+	end_alpha = 60;
 
 	//将绘图线段起始点和终点坐标显示在控件中
 	strTemp.Format("%d",ptStartForDraw.x);
@@ -264,10 +264,10 @@ BOOL CDrawPathDlg::OnInitDialog()
 	strTemp.Format("%d",ptStartForDraw.y);
 	SetDlgItemText(IDC_EDIT_StartY,strTemp) ;
 	
-	strTemp.Format("%d",ptEndForDraw.x);
+	strTemp.Format("%f",end_alpha );
 	SetDlgItemText(IDC_EDIT_EndX,strTemp) ;
 
-	strTemp.Format("%d",ptEndForDraw.y);
+	strTemp.Format("%f",brick_Length);
 	SetDlgItemText(IDC_EDIT_EndY,strTemp) ;
 
 	//控制点的个数
@@ -455,7 +455,7 @@ void CDrawPathDlg::DrawBrick()
 {
 	
 	//brickcenter.y
-	brick_width = 40;
+	brick_width = 30;
 
 brick1.x = brickcenter.x + (int)(brick_width * cos((end_alpha - 90) * PI / 180) / 2);
 brick1.y = brickcenter.y - (int)(brick_width * sin((end_alpha - 90) * PI / 180) / 2);
